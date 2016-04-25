@@ -19,7 +19,7 @@ layer {
     max_distort: 1
     scale_ratios: [1,0.875,0.75]
     is_flow: true
-    mean_value: [128, 128]
+    mean_value: [128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128]
   }
   include: { phase: TRAIN }
 }
@@ -48,7 +48,7 @@ layer {
     crop_size: 224
     mirror: false
     is_flow: true
-    mean_value: [128, 128]
+    mean_value: [128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128]
   }
   include: { phase: TEST }
 }
