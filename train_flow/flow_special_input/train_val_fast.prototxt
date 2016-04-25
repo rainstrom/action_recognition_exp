@@ -209,17 +209,17 @@ layer {
   }
 }
 
-layer {
-  name: "eltwise-sum10"
-  type: "Eltwise"
-  bottom: "flow_data_p567"
-  bottom: "flow_data_p234"
-  top: "flow_data_pms"
-  eltwise_param { 
-    operation: SUM 
-    coeff: [-0.5, 0.5]
-  }
-}
+# layer {
+#   name: "eltwise-sum10"
+#   type: "Eltwise"
+#   bottom: "flow_data_p567"
+#   bottom: "flow_data_p234"
+#   top: "flow_data_pms"
+#   eltwise_param { 
+#     operation: SUM 
+#     coeff: [-0.5, 0.5]
+#   }
+# }
 
 layer {
   name: "concat_flow_data"
@@ -233,7 +233,7 @@ layer {
   bottom: "flow_data_pm45"
   bottom: "flow_data_pm67"
   bottom: "flow_data_pm89"
-  bottom: "flow_data_pms"
+  # bottom: "flow_data_pms"
   top: "flow_data_combine"
   type: "Concat"
   concat_param {
