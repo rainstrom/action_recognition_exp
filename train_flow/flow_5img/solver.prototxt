@@ -1,0 +1,16 @@
+net: "train_val_fast.prototxt"
+test_iter: 190
+test_interval: 200
+# modified
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 10000
+display: 20
+max_iter: 30000
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 5000
+snapshot_prefix: "flow_5img"
+iter_size: 4
+# test_initialization: false
