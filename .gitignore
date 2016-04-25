@@ -1,0 +1,8 @@
+log*
+*.pkl
+*~
+*.jpg
+*.png
+*.caffemodel
+*.solverstate
+.DS_Store
