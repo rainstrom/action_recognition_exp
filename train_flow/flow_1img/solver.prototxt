@@ -11,6 +11,6 @@ max_iter: 30000
 momentum: 0.9
 weight_decay: 0.0005
 snapshot: 5000
-snapshot_prefix: "flow1"
-iter_size: 3
+snapshot_prefix: "flow_1img"
+iter_size: 4
 # test_initialization: false

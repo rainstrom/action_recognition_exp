@@ -1,13 +1,13 @@
-name: "CUHK_Action_SpatialNet"
+name: "CUHK_Action_Temporal_1img_Net"
 layer {
   name: "flow_data"
   type: "VideoData"
   top: "flow_data"
   top: "label"
   video_data_param {
-    source: "dataset_file_examples/train_flow_split1.txt"
+    source: "../../dataset_file_examples/train_flow_split1.txt"
     batch_size: 25
-    new_length: 1
+    new_length: 10
     num_segments: 1
     modality: FLOW
   }
@@ -29,13 +29,13 @@ layer {
   top: "flow_data"
   top: "label"
   video_data_param {
-    source: "dataset_file_examples/val_flow_split1.txt"
+    source: "../../dataset_file_examples/val_flow_split1.txt"
     batch_size: 5
-    new_length: 1
+    new_length: 10
     num_segments: 1
     modality: FLOW
     
-    full_test: true
+    full_test: false
     full_test_param {
       is_mirror: false
       is_crop: false

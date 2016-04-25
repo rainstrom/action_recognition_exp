@@ -59,13 +59,13 @@ layer {
     flow_mean_value: [128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128]
 
     # full_test only work in TEST mode and full_test muse be set to true
-    full_test: true
+    full_test: false
     full_test_param {
       is_mirror: false
       is_crop: false
-      full_test_num_segments: 25
+      full_test_num_segments: 1
       # in full test mode, you must set test_batch_size and batch_size is invalid
-      test_batch_size: 5
+      test_batch_size: 1
     }
   }
   transform_param{
