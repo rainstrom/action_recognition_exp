@@ -6,3 +6,6 @@ log*
 *.caffemodel
 *.solverstate
 .DS_Store
+.idea/*
+*.pyc
+
