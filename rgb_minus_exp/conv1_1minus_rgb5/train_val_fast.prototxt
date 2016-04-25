@@ -20,8 +20,8 @@ layer {
     fix_crop: true
     multi_scale: true
     max_distort: 1
-    # scale_ratios: [1,.875,.75,.66]
-    # mean_value: [104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123]
+    scale_ratios: [1,.875,.75,.66]
+    mean_value: [104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123]
   }
   include: { phase: TRAIN }
 }
@@ -39,19 +39,19 @@ layer {
     num_segments: 1
     modality: RGB
     
-    full_test: false
+    full_test: true
     full_test_param {
-      is_mirror: false
-      is_crop: false
-      full_test_num_segments: 1
+      is_mirror: true
+      is_crop: true
+      full_test_num_segments: 25
       # in full test mode, you must set test_batch_size and batch_size is invalid
-      test_batch_size: 1
+      test_batch_size: 5
     }
   }
   transform_param{
     crop_size: 224
     mirror: false
-    # mean_value: [104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123]
+    mean_value: [104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123]
   }
   include: { phase: TEST }
 }
@@ -245,7 +245,7 @@ layer {
   bottom: "conv1_1_p1"
   top: "conv1_1_minus1"
   eltwise_param { 
-    # coeff: [-1, 1]
+    coeff: [-1, 1]
     operation: SUM 
   }
 }
@@ -256,7 +256,7 @@ layer {
   bottom: "conv1_1_p2"
   top: "conv1_1_minus2"
   eltwise_param { 
-    # coeff: [-1, 1]
+    coeff: [-1, 1]
     operation: SUM 
   }
 }
@@ -267,7 +267,7 @@ layer {
   bottom: "conv1_1_p3"
   top: "conv1_1_minus3"
   eltwise_param { 
-    # coeff: [-1, 1]
+    coeff: [-1, 1]
     operation: SUM 
   }
 }
@@ -278,7 +278,7 @@ layer {
   bottom: "conv1_1_p4"
   top: "conv1_1_minus4"
   eltwise_param { 
-    # coeff: [-1, 1]
+    coeff: [-1, 1]
     operation: SUM 
   }
 }

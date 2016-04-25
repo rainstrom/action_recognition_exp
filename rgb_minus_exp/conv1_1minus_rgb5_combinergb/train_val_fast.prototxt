@@ -6,7 +6,7 @@ layer {
   top: "label"
   video_data_param {
     source: "dataset_file_examples/train_rgb_split1.txt"
-    batch_size: 15
+    batch_size: 20
     new_width: 340
     new_height: 256
     new_length: 5
@@ -39,13 +39,13 @@ layer {
     num_segments: 1
     modality: RGB
     
-    full_test: false
+    full_test: true
     full_test_param {
       is_mirror: false
       is_crop: false
       full_test_num_segments: 25
       # in full test mode, you must set test_batch_size and batch_size is invalid
-      test_batch_size: 5
+      test_batch_size: 25
     }
   }
   transform_param{

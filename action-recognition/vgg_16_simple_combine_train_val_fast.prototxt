@@ -6,8 +6,8 @@ layer {
   top: "flow_data"
   top: "label"
   video_fusion_data_param {
-    rgb_root_folder: "../ucf101_rgb_img/"
-    flow_root_folder: "../ucf101_flow_img_tvl1_gpu/"
+    rgb_root_folder: "/data/ucf101_rgb_img/"
+    flow_root_folder: "/data/ucf101_flow_img_tvl1_gpu/"
     source: "../dataset_file_examples/train_fusion_split1.txt"
     batch_size: 20
     num_segments: 1
@@ -42,8 +42,8 @@ layer {
   top: "flow_data"
   top: "label"
   video_fusion_data_param {
-    rgb_root_folder: "../ucf101_rgb_img/"
-    flow_root_folder: "../ucf101_flow_img_tvl1_gpu/"
+    rgb_root_folder: "/data/ucf101_rgb_img/"
+    flow_root_folder: "/data/ucf101_flow_img_tvl1_gpu/"
     source: "../dataset_file_examples/val_fusion_split1.txt"
     batch_size: 5
     new_height: 256

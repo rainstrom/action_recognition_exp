@@ -3,23 +3,24 @@ import caffe
 import sys
 import cPickle as pickle
 
-caffe.set_device(3)
+caffe.set_device(6)
 caffe.set_mode_gpu()
 num_videos = 3783
 # num_videos = 20
 
 # model to be tested
-caffemodel = './cuhk_action_recognition_vgg_16_conv1minus_rgb5_initfromvgg_split1_rgb_iter_20000.caffemodel'
-net_prototxt = 'conv1minus_rgb5/train_val_fast.prototxt'
-pkl_dir = "conv1minus_rgb5/"
-experiment_name = "conv1minus_rgb5_initfromvgg_iter20000"
-output_layer_name = "fc8"
+#caffemodel = './cuhk_action_recognition_vgg_16_conv1minus_rgb5_initfromvgg_split1_rgb_iter_20000.caffemodel'
+caffemodel = './conv1_1minus_rgb5_combinergb/combine_iter_532.caffemodel'
+net_prototxt = 'conv1_1minus_rgb5_combinergb/train_val_fast.prototxt'
+pkl_dir = "conv1_1minus_rgb5_combinergb/"
+experiment_name = "conv1_1minus_rgb5_combinergb_iter500"
+output_layer_name = "combine_fc8"
 
 # parameters to set
 do_mirror = False
 do_crop = False
-test_segments = 1
-test_batch_size = 1 
+test_segments = 25
+test_batch_size = 25
 
 # generate test_param_tag
 test_param_tag = ("mirror" if do_mirror else "no_mirror") + ("_crop" if do_crop else "_no_crop") + "_seg" + str(test_segments)
@@ -56,7 +57,8 @@ for video_id in range(num_videos):
 
 print("accuracy: {}/{} {}".format(num_correct, num_videos, num_correct/float(num_videos)))
 
-with open(pkl_dir+pickle_file, "wb") as f:
+pickle_file = pkl_dir + pickle_file
+with open(pickle_file, "wb") as f:
 	pickle.dump(all_output, f)
 
 print("pkl file is written to {}".format(pickle_file))

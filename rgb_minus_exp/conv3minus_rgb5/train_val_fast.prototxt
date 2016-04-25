@@ -12,7 +12,6 @@ layer {
     new_length: 5
     num_segments: 1
     modality: RGB
-    shuffle: true
   }
   transform_param{
     crop_size: 224

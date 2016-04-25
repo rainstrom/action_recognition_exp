@@ -1,6 +1,5 @@
-
-fpkl1 = "full_test/full_test_rgb_original_no_mirror_no_crop_seg25.pkl"
-fpkl2 = "full_test/full_test_flow_original_no_mirror_no_crop_seg25.pkl"
+fpkl1 = "./full_test_rgb_original_no_mirror_no_crop_seg25.pkl"
+fpkl2 = "./conv1_1minus_rgb5/full_test_conv1_1minus_rgb5_initfromvgg_iter30000_no_mirror_no_crop_seg25.pkl"
 
 import cPickle as pickle
 import numpy as np
@@ -56,13 +55,13 @@ for i in range(len(pkl1)):
 for i in range(101):
 	print("{}: \t{} \t{} \t{}".format(i, kind_correct[i]/float(kind_total[i]),kind_correct1[i]/float(kind_total[i]),kind_correct2[i]/float(kind_total[i])))
 
-for i in range(101):
-	print("kind {}".format(i))
-	for j in range(len(pkl1)):
-		if pkl1[j][2] == i:
-			print("{}: kind {} example".format(j,i))
-			print np.mean(pkl1[j][1], axis = 0)
-			print np.mean(pkl2[j][1], axis = 0)
+#for i in range(101):
+#	print("kind {}".format(i))
+#	for j in range(len(pkl1)):
+#		if pkl1[j][2] == i:
+#			print("{}: kind {} example".format(j,i))
+#			print np.mean(pkl1[j][1], axis = 0)
+#			print np.mean(pkl2[j][1], axis = 0)
 
 print("weighted sum:")
 print("{}/{} {}".format(correct, total, correct/float(total)))
