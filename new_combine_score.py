@@ -34,7 +34,7 @@ def combine_score(tags, fpkls, score_weights):
 		
 	def softmax(m):
 	    #print len(m.shape), m.shape
-	    print "softmax", m.shape
+	    # print "softmax", m.shape
 	    assert len(m.shape) == 2 and m.shape[1] == 101
 	    copy_m = np.copy(m)
 	    for i in range(copy_m.shape[0]):
