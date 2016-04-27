@@ -5,7 +5,7 @@ import os
 caffe.set_mode_cpu()
 
 print 'Number of arguments:', len(sys.argv), 'arguments.'
-assert sys.argv == 2
+assert len(sys.argv) == 2
 
 flow_num = int(sys.argv[1])
 assert flow_num > 0
@@ -15,7 +15,9 @@ proj_dir = 'flow_' + str(flow_num) + 'img/'
 assert os.path.isdir(proj_dir)
 
 vggnet = caffe.Net('../action-recognition/vgg16.prototxt', '../caffemodels/VGG_ILSVRC_16_layers.caffemodel', caffe.TEST)
-net = caffe.Net(proj_dir + 'train_val_fast.prototxt', caffe.TEST)
+os.chdir(proj_dir)
+net = caffe.Net('train_val_fast.prototxt', caffe.TEST)
+os.chdir('../')
 # Remember to modify
 save_to_model = proj_dir + 'flow_'+str(flow_num)+'img_init.caffemodel'
 
