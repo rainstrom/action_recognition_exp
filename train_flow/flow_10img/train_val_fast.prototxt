@@ -35,13 +35,14 @@ layer {
     num_segments: 1
     modality: FLOW
     
+    # attention
     full_test: false
     full_test_param {
       is_mirror: false
       is_crop: false
-      full_test_num_segments: 100
+      full_test_num_segments: 1
       # in full test mode, you must set test_batch_size and batch_size is invalid
-      test_batch_size: 5
+      test_batch_size: 1
     }
   }
   transform_param{
@@ -444,11 +445,11 @@ layer {
   bottom: "flow_pool5"
   top: "flow_fc6"
   param {
-    lr_mult: 1
+    lr_mult: 5
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: 10
     decay_mult: 0
   }
   inner_product_param {
@@ -476,11 +477,11 @@ layer {
   bottom: "flow_fc6"
   top: "flow_fc7"
   param {
-    lr_mult: 1
+    lr_mult: 10
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: 20
     decay_mult: 0
   }
   inner_product_param {
@@ -508,11 +509,11 @@ layer {
   bottom: "flow_fc7"
   top: "flow_fc8"
   param {
-    lr_mult: 1
+    lr_mult: 10
     decay_mult: 1
   }
   param {
-    lr_mult: 2
+    lr_mult: 20
     decay_mult: 0
   }
   inner_product_param {
