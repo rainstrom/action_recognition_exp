@@ -1,4 +1,4 @@
-name: "CUHK_Action_Temporal_1mean_9minus_Net"
+name: "CUHK_Action_Temporal_special_Net"
 layer {
   name: "flow_data"
   type: "VideoData"
