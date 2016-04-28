@@ -445,11 +445,11 @@ layer {
   bottom: "flow_pool5"
   top: "flow_fc6"
   param {
-    lr_mult: 5
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    lr_mult: 10
+    lr_mult: 2
     decay_mult: 0
   }
   inner_product_param {
@@ -477,11 +477,11 @@ layer {
   bottom: "flow_fc6"
   top: "flow_fc7"
   param {
-    lr_mult: 10
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    lr_mult: 20
+    lr_mult: 2
     decay_mult: 0
   }
   inner_product_param {
@@ -509,11 +509,11 @@ layer {
   bottom: "flow_fc7"
   top: "flow_fc8"
   param {
-    lr_mult: 10
+    lr_mult: 1
     decay_mult: 1
   }
   param {
-    lr_mult: 20
+    lr_mult: 2
     decay_mult: 0
   }
   inner_product_param {
