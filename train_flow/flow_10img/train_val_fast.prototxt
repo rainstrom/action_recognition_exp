@@ -1,4 +1,4 @@
-name: "CUHK_Action_Temporal_1img_Net"
+name: "CUHK_Action_Temporal_10img_Net"
 layer {
   name: "flow_data"
   type: "VideoData"
@@ -468,7 +468,7 @@ layer {
   bottom: "flow_fc6"
   top: "flow_fc6"
   dropout_param {
-    dropout_ratio: 0.9
+    dropout_ratio: 0.5
   }
 }
 layer {
@@ -500,7 +500,7 @@ layer {
   bottom: "flow_fc7"
   top: "flow_fc7"
   dropout_param {
-    dropout_ratio: 0.8
+    dropout_ratio: 0.5
   }
 }
 layer {
