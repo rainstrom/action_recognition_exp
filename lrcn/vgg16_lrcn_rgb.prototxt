@@ -8,11 +8,11 @@ layer {
   video_data_param {
     root_folder: "/scratch/xiaoyang/UCF101_frames_org2/"
     source: "../dataset_file_examples/train_split1_avi.txt"
-    batch_size: 10
+    batch_size: 8
     new_width: 340
     new_height: 256
     new_length: 1
-    num_segments: 25
+    num_segments: 15
     modality: RGB
   }
   transform_param{
@@ -22,8 +22,8 @@ layer {
     multi_scale: true
     max_distort: 1
     scale_ratios: [1,0.875,0.75,0.66]
-    mean_value: [104, 117, 123]
-  }
+    mean_value: [104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123] 
+   }
   include: { phase: TRAIN }
 }
 layer {
@@ -34,29 +34,29 @@ layer {
   video_data_param {
     root_folder: "/scratch/xiaoyang/UCF101_frames_org2/"
     source: "../dataset_file_examples/val_split1_avi.txt"
-    batch_size: 3
+    batch_size: 1
     new_length: 1
     new_height: 256
     new_width: 340
-    num_segments: 25
+    num_segments: 15
     modality: RGB
   }
   transform_param{
     crop_size: 224
     mirror: false
-    mean_value: [104, 117, 123]
+    mean_value: [104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123, 104, 117, 123] 
   }
   include: { phase: TEST }
 }
 layer {
-  layer: "clip-cm-label"
+  name: "clip-cm-label"
   type: "Slice"
   bottom: "cm_label"
   top: "label"
   top: "clip_markers"
   slice_param {
-    axis: 2
-    slice_point: 1
+    axis: 0
+    slice_point: 15
   }
 }
 layer {
@@ -358,6 +358,7 @@ layer {
   dropout_param {
     dropout_ratio: 0.5
   }
+  propagate_down: false
 }
 # seq_length*batch_size, 4096
 layer{
@@ -367,8 +368,8 @@ layer{
   top: "fc6-reshape"
   reshape_param{
     shape{
-      dim: 25 # SEQ_LENGTH
-      dim: 0 # BATCH_SIZE
+      dim: 15 # SEQ_LENGTH
+      dim: -1 # BATCH_SIZE
       dim: 4096 # FEATURE_SIZE
     }
   }
@@ -403,10 +404,10 @@ layer {
   }
 }
 layer {
-  name: "fc8"
+  name: "fc8-lrcn"
   type: "InnerProduct"
   bottom: "lstm1-drop"
-  top: "fc8"
+  top: "fc8-lrcn"
   param {
     lr_mult: 10
     decay_mult: 1
@@ -431,7 +432,7 @@ layer {
 layer {
   name: "loss"
   type: "SoftmaxWithLoss"
-  bottom: "fc8"
+  bottom: "fc8-lrcn"
   bottom: "label"
   top: "loss"
   softmax_param {
@@ -441,7 +442,7 @@ layer {
 layer {
   name: "accuracy"
   type: "Accuracy"
-  bottom: "fc8"
+  bottom: "fc8-lrcn"
   bottom: "label"
   top: "accuracy"
   accuracy_param {
