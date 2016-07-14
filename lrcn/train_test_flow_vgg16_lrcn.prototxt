@@ -8,11 +8,11 @@ layer {
   video_data_param {
     root_folder: "/scratch/xiaoyang/UCF101_opt_flows_org2/"
     source: "../dataset_file_examples/train_split1_avi.txt"
-    batch_size: 8
+    batch_size: 2
     new_width: 340
     new_height: 256
     new_length: 1
-    num_segments: 25
+    num_segments: 15
     modality: FLOW
   }
   transform_param{
@@ -39,7 +39,7 @@ layer {
     new_length: 1
     new_height: 256
     new_width: 340
-    num_segments: 25
+    num_segments: 15
     modality: FLOW
   }
   transform_param{
@@ -58,11 +58,11 @@ layer {
   top: "clip_markers"
   slice_param {
     axis: 0
-    slice_point: 25
+    slice_point: 15
   }
 }
 layer {
-  name: "conv1_1"
+  name: "conv1_1_flow"
   type: "Convolution"
   bottom: "data"
   top: "conv1_1"
@@ -70,7 +70,15 @@ layer {
     num_output: 64
     pad: 1
     kernel_size: 3
-  }
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  } 
 }
 layer {
   name: "relu1_1"
@@ -369,7 +377,7 @@ layer{
   top: "fc6-reshape"
   reshape_param{
     shape{
-      dim: 25 # SEQ_LENGTH
+      dim: 15 # SEQ_LENGTH
       dim: -1 # BATCH_SIZE
       dim: 4096 # FEATURE_SIZE
     }
