@@ -17,5 +17,5 @@ solver_mode: GPU
 random_seed: 1701
 # average_loss: 1000
 clip_gradients: 15
-iter_size: 12
+iter_size: 6
 # test_initialization: false
