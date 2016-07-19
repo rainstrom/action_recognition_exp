@@ -7,26 +7,23 @@ layer {
   top: "cm_label"
   video_data_param {
     root_folder: "/scratch/xiaoyang/UCF101_opt_flows_org2/"
-    source: "../dataset_file_examples/train_split1_avi.txt"
+    source: "../dataset_file_examples/val_split1_avi.txt"
     batch_size: 8
-    new_width: 340
+    new_length: 15
     new_height: 256
-    new_length: 10
+    new_width: 340
     num_segments: 15
     modality: FLOW
   }
   transform_param{
     crop_size: 224
-    mirror: true
-    fix_crop: true
-    multi_scale: true
-    max_distort: 1
-    scale_ratios: [1,.875,.75]
+    mirror: false
     is_flow: true
     mean_value: [128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128, 128]
-   }
-  include: { phase: TRAIN }
+  }
+  include: { phase: TEST }
 }
+
 layer {
   name: "clip-cm-label"
   type: "Slice"
