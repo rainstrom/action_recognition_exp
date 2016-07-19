@@ -39,14 +39,14 @@ layer {
     num_segments: 1
     modality: RGB
     
-    full_test: false
-    full_test_param {
-      is_mirror: false
-      is_crop: false
-      full_test_num_segments: 1
-      # in full test mode, you must set test_batch_size and batch_size is invalid
-      test_batch_size: 1
-    }
+    #full_test: false
+    #full_test_param {
+    #  is_mirror: false
+    #  is_crop: false
+    #  full_test_num_segments: 1
+    #  # in full test mode, you must set test_batch_size and batch_size is invalid
+    #  test_batch_size: 1
+    #}
   }
   transform_param{
     crop_size: 224
